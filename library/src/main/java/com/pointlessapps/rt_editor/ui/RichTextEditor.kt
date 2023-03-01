@@ -9,7 +9,8 @@ fun RichTextEditor(
     value: RichTextValue,
     onValueChange: (RichTextValue) -> Unit,
     modifier: Modifier = Modifier,
-    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle()
+    minLines: Int = 1,
+    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle(),
 ) {
     RichTextField(
         modifier = modifier,
@@ -22,6 +23,7 @@ fun RichTextEditor(
                 onValueChange(newValue)
             }
         },
+        minLines = minLines,
         textFieldStyle = textFieldStyle
     )
 }

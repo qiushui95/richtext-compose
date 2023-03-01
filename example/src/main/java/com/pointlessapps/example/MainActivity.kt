@@ -229,7 +229,7 @@ object BoldRedStyle : Style
 class CustomStyleMapper : StyleMapper() {
 
     override fun fromTag(tag: String) =
-        runCatching { super.fromTag(tag) }.getOrNull() ?: when (tag) {
+        runCatching { super.fromTag(tag) }.onFailure { it.printStackTrace() }.getOrNull() ?: when (tag) {
             "${BoldRedStyle.javaClass.simpleName}/" -> BoldRedStyle
             else -> throw IllegalArgumentException()
         }

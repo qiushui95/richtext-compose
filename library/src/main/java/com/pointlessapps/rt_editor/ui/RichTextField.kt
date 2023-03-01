@@ -28,7 +28,8 @@ internal fun RichTextField(
     styleMapper: StyleMapper,
     onValueChange: (TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,
-    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle()
+    minLines: Int = 1,
+    textFieldStyle: RichTextFieldStyle = defaultRichTextFieldStyle(),
 ) {
     Box(modifier = modifier) {
         if (value.text.isEmpty()) {
@@ -53,7 +54,8 @@ internal fun RichTextField(
             textStyle = textFieldStyle.textStyle.copy(
                 color = textFieldStyle.textColor
             ),
-            cursorBrush = SolidColor(textFieldStyle.cursorColor)
+            cursorBrush = SolidColor(textFieldStyle.cursorColor),
+            minLines=minLines,
         )
     }
 }
@@ -76,5 +78,5 @@ data class RichTextFieldStyle(
     val textStyle: TextStyle,
     val textColor: Color,
     val placeholderColor: Color,
-    val cursorColor: Color
+    val cursorColor: Color,
 )
